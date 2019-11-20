@@ -1,0 +1,19 @@
+body{
+	background-color: #f5f5f5;
+}
+#boxx{
+	background-color: white;
+	padding: 20px 20px;
+	width: 90%;
+	border-radius: 5px;
+}
+#q{
+	font-family: "Trebuchet MS";
+	font-weight: bold;
+}
+#a{
+	font-family: "Helvetica";
+}
+h1{
+	font-family: "Arial";
+}

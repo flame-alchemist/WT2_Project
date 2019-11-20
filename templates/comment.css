@@ -1,0 +1,40 @@
+#block{
+	background-color: white;
+	width: 30%;
+	margin-left: 10%;
+	padding: 1.5%;
+	border:none;
+	border-radius: 10px;
+	margin-bottom: 2%;
+}
+
+.rev{
+	color: white;
+    background-color: #0f1626;
+    padding: 10px 10px;
+    border-style: none;
+    border-radius: 5px;
+    font-family: "Helvetica";
+}
+
+#dp{
+    color: white;
+    background-color: #ff533d;
+    padding: 10px 10px;
+    border-style: none;
+    border-radius: 5px;
+    font-family: "Helvetica";
+}
+
+pre{
+	font-family: "Trebuchet MS";
+}
+
+.title{
+	background-color: white;
+	padding: 1.5%;
+	border:none;
+	border-radius: 10px;
+	margin-left: 10%;
+	margin-right: 10%;
+}

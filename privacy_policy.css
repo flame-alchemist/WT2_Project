@@ -1,0 +1,26 @@
+body{
+	background-color: #f5f5f5;
+}
+
+#boxx{
+	background-color: white;
+	padding: 20px 20px;
+	width: 90%;
+	border-radius: 5px;
+	text-align: left;
+}
+
+h1, h3{
+	font-family: "Helvetica";
+}
+
+p, li{
+	font-family: "Trebuchet MS";
+}
+
+#update
+{
+	text-indent: 43px;
+	font-style: italic;
+}
+

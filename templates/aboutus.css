@@ -1,0 +1,18 @@
+#aboutus, #contactus{
+	background-color: white;
+	padding: 20px 20px;
+	width: 90%;
+	height: 20%;
+	border-radius: 5px;
+	font-family: "Helvetica";
+}
+h1{
+	padding-top: 1%;
+	font-family: "Helvetica";
+}
+#a, li, #contact, #c{
+	padding: 1%;
+	font-size: 20px;
+	text-align: left;
+	font-family: "Helvetica";
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cart</title>
+	<link rel="stylesheet" type="text/css" href="cart.css">
+	<link rel="stylesheet" type="text/css" href="project.css">
+</head>
+<body>
+	<center>
+		<h2>Shopping Cart</h2>
+	</center>
+<div id="one" class = "box">
+	<div id="int">
+		<img src="galaxys8.png" alt = "Galaxy S8">
+	</div>
+	<div id = "int">
+		<div id = "phname">Galaxy S8</div><br><br>
+		Delivery within 4-5 working days with a 10 day replacement policy.
+	</div>
+	<div id ="int">
+		Price :<br> Rs. 59,000
+	</div>
+	<div id = "int">
+		<button id= "rem" onclick="remov1()">Remove Item</button>
+	</div>
+</div>
+<br>
+<br>
+<div id="two" class = "box">
+	<div id="int">
+		<img src="oneplus5.jpg" alt = "OnePlus 5">
+	</div>
+	<div id = "int">
+		<div id="phname">OnePlus 5</div><br><br>
+		Delivery within 4-5 working days with a 10 day replacement policy.
+	</div>
+	<div id ="int">
+		Price :<br> Rs. 35,000
+	</div>
+	<div id = "int">
+		<button id= "rem" onclick="remov2()">Remove Item</button>
+	</div>
+</div>
+<script type="text/javascript">
+	var x = document.getElementById('one');
+	var y = document.getElementById('two');
+	function remov1(){
+		var res = confirm ("Are you sure you want to delete this item?");
+		if(res){
+		x.parentNode.removeChild(x);
+		}
+	}
+	function remov2(){
+		var res = confirm ("Are you sure you want to delete this item?");
+		if(res){
+		y.parentNode.removeChild(y);
+		}
+	}
+</script>
+</body>
+</html>
