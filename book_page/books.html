@@ -6,7 +6,46 @@
 	</title>
 	<link rel="stylesheet" type="text/css" href="showcase.css">
 	<link rel = "stylesheet" type = "text/css" href = "project.css">
-	<script src="project.js"></script>
+	<script>
+		xhr=new XMLHttpRequest();
+		scrollAmt=50;
+		count=0;
+
+		function showChunk()
+		{
+			console.log(xhr.status)
+			if(xhr.readyState==4 && xhr.status==200)
+			{
+				console.log("hello");
+				count++;
+				console.log(count);
+				// document.getElementById("content").innerHTML+=xhr.responseText;
+				console.log(JSON.parse(xhr.responseText));
+				var myObj = JSON.parse(xhr.responseText);
+				// addToDOM(myObj);
+			}
+		}
+		window.onscroll = function()
+		{
+			scroll = document.body.scrollTop||document.documentElement.scrollTop;
+			if(scroll>scrollAmt)
+			{
+				var obj = JSON.stringify({"chunk_count":count});
+				scrollAmt=scroll;
+				xhr.onreadystatechange=showChunk;
+				xhr.open("POST","http://0.0.0.0:8080/api/v1/getBooks",true);
+				xhr.setRequestHeader("Content-Type", "application/json");
+				xhr.send(obj);
+			}
+		}
+
+		function addTodDom(obj)
+		{
+			var table = document.getElementById("table");
+		}
+
+
+	</script>
 </head>
 
 <body>
@@ -48,49 +87,29 @@
 		<center>
 			<table cellpadding="20" cellspacing="30" border = "0">
 				<tr>
-					<td id = "shad1" onmouseenter="shadow1()" onmouseleave="noshadow1()">
+					<td id = "shad1">
 						<center>
 							<h3>Oneplus 5T</h3>
 						<img src="https://images.gr-assets.com/books/1447303603m/2767052.jpg" alt="Oneplus 5T" style = "height: 100%"> <br /> <br /></center>
-						<b id="spec"> Specifications: </b><br />
-						<ul>
-							<li> 6.0 inches Optic AMOLED Display</li>
-							<li> Snapdragon™ 835</li>
-							<li> Dual 20MP Front 16MP Rear Camera</li>
-							<li> 3500 mAh Battery</li>
-						</ul>
 						Price: <b class="green">Rs. 39,990</b><br /><br />
 						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
 						<button class="comment" onclick="cartAdded()"> Write A Review </button>
 					</td>
-					<td id = "shad2" onmouseenter="shadow2()" onmouseleave="noshadow2()">
+					<td id = "shad2">
 
 						<center>
 							<h3>Oneplus 5</h3>
 						<img src="https://images.gr-assets.com/books/1474154022m/3.jpg" alt="Oneplus 5" style = "height: 100%"/> <br /> <br /></center>
-						<b id="spec"> Specifications: </b><br />
-						<ul>
-							<li> 5.5 inch Optic AMOLED Display</li>
-							<li> 3300 mAh Battery</li>
-							<li> 16MP Front 16MP Rear Wide Angle Camera </li>
-							<li> Snapdragon™ 835</li>
-						</ul>
 						Price: <b class="green">Rs. 32,999</b><br /><br />
 						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
 						<button class="comment" onclick="cartAdded()"> Write A Review </button>
 
 					</td>
-					<td id = "shad3" onmouseenter="shadow3()" onmouseleave="noshadow3()">
+					<td id = "shad3">
 
 						<center>
 							<h3>Oneplus 3T</h3>
 						<img src="https://images.gr-assets.com/books/1361039443m/41865.jpg" alt="Oneplus 3T" style = "height: 100%"/> <br /> <br /></center>
-						<b id="spec"> Specifications: </b><br />
-						<ul>
-							<li> 5.5 inch Full HD Display</li>
-							<li> Qualcomm® Snapdragon™ 821</li>
-							<li> 3400 mAh Battery</li>
-						</ul><br>
 						Price: <b class="green">Rs. 29,999</b><br /><br />
 						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
 						<button class="comment" onclick="cartAdded()"> Write A Review </button>
@@ -98,51 +117,31 @@
 					</td>
 				</tr>
 				<tr>
-					<td id = "shad4" onmouseenter="shadow4()" onmouseleave="noshadow4()">
+					<td id = "shad4">
 
 						<center>
 							<h3>Oneplus 3</h3>
 						<img src ="https://images.gr-assets.com/books/1361975680m/2657.jpg" alt= "Oneplus 3" style = "height: 100%"/> <br /> <br /></center>
-						<b id="spec"> Specifications: </b><br />
-						<ul>
-							<li> 5.5 inch Optic AMOLED Display</li>
-							<li> Qualcomm® Snapdragon™ 820</li>
-							<li> 6 GB RAM</li>
-							<li> 16 MP Rear Camera</li>
-						</ul>
 						Price: <b class="green">Rs. 27,999</b><br /><br />
 						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
 						<button class="comment" onclick="cartAdded()"> Write A Review </button>
 
 					</td>
-					<td id = "shad5" onmouseenter="shadow5()" onmouseleave="noshadow5()">
+					<td id = "shad5">
 
 						<center>
 							<h3>Oneplus 2</h3>
 						<img src ="https://images.gr-assets.com/books/1490528560m/4671.jpg" alt= "Oneplus 2" style = "height: 100%"/> <br /> <br /></center>
-						<b id="spec"> Specifications: </b><br />
-						<ul>
-							<li> 5.5 inch LCD Display</li>
-							<li> 13 MP Front Camera 5 MP Rear Camera</li>
-							<li> Li-Po 3300 mAh Battery</li>
-						</ul><br>
 						Price: <b class="green">Rs. 22,999</b><br /><br />
 						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
 						<button class="comment" onclick="cartAdded()"> Write A Review </button>
 
 					</td>
-					<td id = "shad6" onmouseenter="shadow6()" onmouseleave="noshadow6()">
+					<td id = "shad6">
 
 						<center>
 							<h3>Oneplus One</h3>
 						<img src ="https://images.gr-assets.com/books/1360206420m/11870085.jpg" alt= "Oneplus One" style = "height: 100%"/> <br /> <br /></center>
-						<b id="spec"> Specifications: </b><br />
-						<ul>
-							<li> 5.5 inch LCD Display</li>
-							<li> Qualcomm® Snapdragon™ 801</li>
-							<li> 3300 mAh Battery</li>
-							<li> 13 MP Front Camera 5 MP Rear Camera</li>
-						</ul>
 						Price: <b class="green">Rs. 7,500</b><br /><br />
 						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
 						<button class="comment" onclick="cartAdded()"> Write A Review </button>

@@ -33,7 +33,7 @@ def add_user():
 
     return jsonify({}),201
 
-@app.route('/api/v1/checkUser', methods=['POST'])
+@app.route('/api/v1/check_user', methods=['POST'])
 def check_user():
     # print("check user")
     cur = mysql.connection.cursor()
@@ -69,12 +69,12 @@ def get_books():
     print(data)
     return_data = []
     if data:
-    for i in data:
-    tmp = {"title":i[0],"author":i[1],"url":i[2]}
-    return_data.append(tmp)
-    return jsonify({"data":return_data}),200
+        for i in data:
+            tmp = {"title":i[0],"author":i[1],"url":i[2]}
+            return_data.append(tmp)
+        return jsonify({"data":return_data}),200
     else:
-    return jsonify({}),400
+        return jsonify({}),400
 
 
 @app.route('/api/v1/suggest', methods=['POST'])

@@ -8,19 +8,29 @@
 <link rel = "stylesheet" type = "text/css" href = "../navbar/nav.css">
 
 <body class="bg">
-
+        <script>
+                function logout()
+                {
+                    sessionStorage.removeItem("username");
+                    sessionStorage.removeItem("id");
+                    // window.location.href = "../home_page/home.html";
+                }
+                window.onload=function(){
+                    var div = document.getElementById("user");
+                    div.innerHTML = "Welcome "+sessionStorage.getItem("username");
+                }
+            </script>
     <!--Navigation bar-->
     <div class="topnav">
             <input type="text" placeholder="Search.." class="search">
             <input type="submit" value="Search" class="srch">
-            <a href="../home_page/home.html">Home</a>
+            <a href="home2.html">Home</a>
             <a href="../cart_page/cart.html">Cart</a>
-            <a href="../login_signup/signup.html">Sign up</a>
-            <a href="../login_signup/login.html">Login</a>
+            <a href="../home_page/home.html" onclick="logout()">Logout</a>
 
     </div>
     <!--end of Navigation bar-->
-    <h1> <br/> </h1>
+    <h1 id="user" style="color: white;"></h1>
     <div class="motto">
             <p>For every book you buy, we donate 5% of the price of the book to help educate girl children in rural areas.</p>
     </div>  
