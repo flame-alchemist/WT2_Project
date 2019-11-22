@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>front page</title>
+        <link rel="stylesheet" href="signup.css">
+        <link rel="stylesheet" href="../navbar/nav.css">
     </head>
     <body>
         <script>
@@ -26,12 +28,37 @@
                 alert("Processing");
             }
         </script>
-        <form id='form'  onsubmit="requestsend()" method="POST">
-            Email: <input type="email" name="emailID">
-            <br>
-            Password: <input type="password" name="password" minlength="5">
-            <br>
-            <input type="submit" value="Sign-Up">
-        </form>
+
+        <!--Navigation bar-->
+        <div class="topnav">
+                <a href="../home_page/home.html">Home</a>
+                <a href="../cart_page/cart.html">Cart</a>
+                <a href="../login_signup/signup.html">Signup</a>
+                <a href="../login_signup/login.html">Login</a>
+
+        </div>
+        <!--end of Navigation bar-->
+
+        <div id = "box">
+                <center><h1 class = "header" >Login</h1></center>
+                <br>
+            <form id='form'  onsubmit="requestsend()" method="POST" class="form">
+                <b>Email</b><input type="email" name="emailID" class="tbox">
+                <br>
+                <b>Password</b><input type="password" name="password" minlength="5" class="tbox">
+                <br>
+                <center><input type="submit" value="Sign-Up" class="sub"></center>
+            </form>
+        </div>
+
+        <center>
+                <footer class="foot">
+                    <p ><a id = "footref" href = "../info_pages/aboutus.html" class="link">About Us</a>
+                    <a id = "footref" href = "../info_pages/FAQ.html" class="link">FAQ</a>
+                    <a id = "footref" href="../info_pages/privacy_policy.html" class="link">Privacy Policy</a>
+                    <a id = "footref" href="../info_pages/contactus.html" class="link">Contact Us</a>
+                </footer>
+            </center>    
+        
     </body>
 </html>

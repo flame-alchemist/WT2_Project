@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>    Home    </title>
+	<title>Home</title>
 <!--...........................................................................................................................-->
 
 	<style type="text/css">
@@ -77,10 +77,22 @@
 
 </head>
 <link rel = "stylesheet" type = "text/css" href = "home.css">
-<script src="home.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "../navbar/nav.css">
+
 <body>
-	<center>
-		<div id = "wrapper">
+
+    <!--Navigation bar-->
+    <div class="topnav">
+            <a href="../home_page/home.html">Home</a>
+            <a href="../cart_page/cart.html">Cart</a>
+            <a href="../login_signup/signup.html">Signup</a>
+            <a href="../login_signup/login.html">Login</a>
+
+    </div>
+    <!--end of Navigation bar-->
+
+	<!-- <center> -->
+		<!-- <div id = "wrapper">
 			<div id = "navbar">
 				<div>
 					<img class="logo" src="cellcity1.png"/>
@@ -111,17 +123,10 @@
 				</div>
 			</div>
 		</div>
-		<br/><br/><br/>
+		<br/><br/><br/> -->
 
 
-		<div class = "topbrandsdiv">
-			<div class="topbrands">	BUY	 BOOKS	</div>
-			<a href="books.html"><img src="op1.png" class = "brandlogo"></a>
-		</div>
-	</center>
-
-
-		<center>
+		<!-- <center>
 		<h2 style = "color:white; font-family: Franklin Gothic Book; color:#0f1626;"><i>New Arrivals</i></h2><br>
 		<div class="slider-holder">
         <span id="slider-image-1"></span>
@@ -138,16 +143,16 @@
             <a href="#slider-image-3" class="slider-change"></a>
         </div>
     </div>
-	</center><br>
+	</center><br> -->
 
 
 	<center>
-		<footer>
-            <p ><a id = "footref" href = "aboutus.html">About Us</a>
-            <a id = "footref" href = "FAQ.html">FAQ</a>
-            <a id = "footref" href="privacy_policy.html">Privacy Policy</a>
-            <a id = "footref" href="contactus.html">Contact Us</a>
-        </footer>
-	</center>
+            <footer class="foot">
+                <p ><a id = "footref" href = "../info_pages/aboutus.html" class="link">About Us</a>
+                <a id = "footref" href = "../info_pages/FAQ.html" class="link">FAQ</a>
+                <a id = "footref" href="../info_pages/privacy_policy.html" class="link">Privacy Policy</a>
+                <a id = "footref" href="../info_pages/contactus.html" class="link">Contact Us</a>
+            </footer>
+        </center>    
 </body>
 </html>
