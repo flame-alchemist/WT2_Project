@@ -1,2 +1,2 @@
 # WT2_Project
-WebTec 2 project
+WebTech 2 project
