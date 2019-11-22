@@ -1,48 +1,49 @@
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+body
+{
+    background-image: url("../home_page/grey1.jpg");
 }
 
-
-/* Clear floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-label{
-    font-family: "Trebuchet MS";
-    white-space: pre;
-}
-
-form{
+#box
+{
     background-color: white;
-    margin-left: 30%;
-    margin-right:30%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    border-radius: 10px;
+    border-style: solid white;
+    border-radius: 4%;
+    padding: 3%;
+    width: 15%;
+    margin: auto;
+    margin-top: 7.5%;  
 }
 
-#cancel{
-    color: white;
-    background-color: #ff533d;
-    padding: 10px 10px;
-    border-style: none;
-    border-radius: 5px;
-    font-family: "Helvetica";
+.tbox
+{
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: rgb(230, 227, 227);
+    width: 90%;
+    border:none;
+
 }
 
-#signup{
+.sub
+{
+    border-radius: 5%;
+    padding: 7%;
+    background-color: rgb(41, 167, 93);
+    border:none;
+    margin-top: 10%;
+    font-size: 100%;
     color: white;
-    background-color: #0f1626;
-    padding: 10px 10px;
-    border-style: none;
-    border-radius: 5px;
-    font-family: "Helvetica";
+}
+
+.form
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+}
+
+.header
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200%;
 }
