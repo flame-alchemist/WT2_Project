@@ -62,7 +62,7 @@ def check_user():
 def get_books():
     chunk_count = int(request.json['chunk_count'])
     cur = mysql.connection.cursor()
-    cur.execute('select original_title, authors, image_url from books where id between ' + str(chunk_count*6) + ' and ' + str((chunk_count*6+6)))
+    cur.execute('select original_title, authors, image_url, original_publication_year, average_rating  from books where id between ' + str(chunk_count*6+1) + ' and ' + str((chunk_count*6+6)))
     # cur.execute('select original_title, authors from books where id between ' + str(chunk_count) + ' and ' + str((chunk_count*10+10)))
     data = cur.fetchall()
     cur.close()
@@ -70,7 +70,7 @@ def get_books():
     return_data = []
     if data:
         for i in data:
-            tmp = {"title":i[0],"author":i[1],"url":i[2]}
+            tmp = {"title":i[0],"author":i[1],"url":i[2],"published":i[3],"rating":str(i[4])}
             return_data.append(tmp)
         return jsonify({"data":return_data}),200
     else:
@@ -86,7 +86,7 @@ def get_terms():
     data = cur.fetchall()
     print(data)
     return_data = [element for t in data for element in t]
-    return jsonify({"data":return_data}), 200;
+    return jsonify({"data":return_data}), 200
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8080, debug=True)
