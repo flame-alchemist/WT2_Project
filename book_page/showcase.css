@@ -1,0 +1,68 @@
+body
+{
+	background-color: #f5f5f5;
+}
+#spec
+{
+	font-family: "Helvetica";
+}
+table
+{
+	border-style: solid;
+}
+h3
+{
+	font-family: "Verdana";
+}
+li
+{
+	font-family: "Trebuchet MS";
+}
+img
+{
+	max-width: 100%;
+	height:auto;
+	margin: 0 0 10px 0;
+}
+.boxout
+{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+table 
+{ 
+	table-layout: fixed; 
+	width: 100%;
+}
+
+td 
+{ 
+	width: 33%;
+	padding: 0.5%;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.cart
+{
+	color: white;
+	background-color: #ff533d;
+	padding: 10px 10px;
+	border-style: none;
+	border-radius: 5px;
+	font-family: "Helvetica";
+}
+.comment
+{
+	color: white;
+	background-color: #0f1626;
+	padding: 10px 10px;
+	border-style: none;
+	border-radius: 5px;
+	font-family: "Helvetica";
+}
+.green
+{
+	color: #00cc00;
+}

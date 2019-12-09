@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		OnePlus Smartphones
+	</title>
+	<link rel="stylesheet" type="text/css" href="showcase.css">
+	<!--<link rel = "stylesheet" type = "text/css" href = "project.css">-->
+	<link rel="stylesheet" href="../navbar/nav.css">
+	<script>
+		function Suggest(){
+		//Maintain a reference to the current object
+			var object=this;
+			this.timer=null;
+			this.search=null;
+			this.container=null;
+			this.url=null;
+			this.xhr=new XMLHttpRequest();
+			
+
+			this.getTerm=function(){
+				this.search=document.getElementById("search");
+				this.container=document.getElementById("container");
+			//to invoke the send search function only if the user
+			//pauses for a second			
+				if(this.timer){
+					clearTimeout(this.timer);
+				}
+				this.timer=setTimeout(this.sendTerm,1000)
+				
+			
+			}
+			this.sendTerm=function(){
+				object.url="http://0.0.0.0:8080/api/v1/suggest";
+				obj = {"search_term":object.search.value};
+				JSONdata = JSON.stringify(obj)
+				//check if the search term is available in cache
+				// i.e. Local Storage
+				// if(localStorage.getItem(object.url)){
+				// 	var cacheRes=JSON.parse(localStorage.getItem(object.url))
+				// 	object.populateFood(cacheRes);
+				// 	console.log(localStorage.getItem(object.url));
+				// 	console.log("from browser cache")
+				// }
+				//else{
+				object.xhr.onreadystatechange = object.showResult;
+				console.log(object.search.value)
+				console.log(this)
+				object.xhr.open("POST",object.url,true);
+				object.xhr.setRequestHeader("Content-Type", "application/json");
+				object.xhr.send(JSONdata);
+				//				alert(this)
+
+				//}
+			}
+			this.showResult=function(){
+				if(this.readyState==4 && this.status==200){
+					var res=this.responseText;
+					var resO=JSON.parse(res);
+					//Store search result in cache
+					//localStorage.setItem(object.url,res);
+					if(resO.length==0){
+					
+						object.search.style.backgroundColor="red"
+						object.search.style.fontStyle="italics"
+					}
+					else{
+						object.populate(resO);	
+					}
+				}
+				//				alert(this)
+
+			}
+
+			this.populate=function(resO){
+				if(object.container != null)
+					object.container.innerHTML="";
+				list = resO["data"]
+				for(i= 0 ; i < list.length; i++){
+					var itemDiv=document.createElement("div");
+					itemDiv.innerHTML=list[i];
+					itemDiv.className="book";
+					itemDiv.onclick=object.addToCart;
+					object.container.appendChild(itemDiv)
+					console.log(object.container)
+				}
+				object.container.style.display="block";
+				console.log(object.container)
+				//				alert(this)
+
+			 }
+			this.addToCart=function(e){
+				object.search.value=e.target.innerHTML;
+				object.search.style.backgroundColor="white";
+				object.container.style.display="none"
+				object.container.innerHTML="";
+				alert("Added to Cart");
+				//alert(this)
+			}
+		
+		}
+		
+		</script>
+
+	
+</head>
+
+<body>
+<center>
+		<div id = "wrapper">
+			<div id = "navbar">
+				<!-- <div>
+					<img class="logo" src="cellcity1.png"/>
+				</div> -->
+				<div class = "searchwrapper">
+					<input type="text" id="search" onkeypress="var obj=new Suggest(); obj.getTerm();" />
+					<!--<input type="button" id="btn" class = "searchbutton" onclick="searchfn()" value="Search" />
+					<input list="searchbox" type ="search" placeholder="Search" class = "searchbox" id = "container">-->
+					<!--<datalist id="searchbox">
+						<option id = "opt1" value="Apple">
+						<option id = "opt2" value="Google">
+						<option id = "opt3" value="Htc">
+						<option id = "opt4" value="OnePlus">
+						<option id = "opt5" value="Samsung">
+					</datalist>-->
+					<input type="button" id="btn" class = "searchbutton" onclick="searchfn()" value="Search" />
+					<div id="container">
+				</div>
+				<div>
+				<a id="home" href = "project.html">Home</a>
+				</div>
+				<div>
+					<a id = "linkref" href = "">Cart</a>
+				</div>
+				<div>
+					<a id = "linkrefsignin" href = "signup.php">Sign In</a>
+					<span><img class = "avatar" src="avatar.png"></span>
+				</div>
+			</div>
+		</div>
+		<br/><br/></center>
+
+	<center>
+		<img src="op1.png" alt="Oneplus Logo" />
+	</center>
+		<center>
+			<table cellpadding="20" cellspacing="30" border = "0">
+				<tr>
+					<td id = "shad1" onmouseenter="shadow1()" onmouseleave="noshadow1()">
+						<center>
+							<h3>Oneplus 5T</h3>
+						<img src="https://images.gr-assets.com/books/1447303603m/2767052.jpg" alt="Oneplus 5T" style = "height: 100%"> <br /> <br /></center>
+						<b id="spec"> Specifications: </b><br />
+						<ul>
+							<li> 6.0 inches Optic AMOLED Display</li>
+							<li> Snapdragon™ 835</li>
+							<li> Dual 20MP Front 16MP Rear Camera</li>
+							<li> 3500 mAh Battery</li>
+						</ul>
+						Price: <b class="green">Rs. 39,990</b><br /><br />
+						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
+						<button class="comment" onclick="cartAdded()"> Write A Review </button>
+					</td>
+					<td id = "shad2" onmouseenter="shadow2()" onmouseleave="noshadow2()">
+
+						<center>
+							<h3>Oneplus 5</h3>
+						<img src="https://images.gr-assets.com/books/1474154022m/3.jpg" alt="Oneplus 5" style = "height: 100%"/> <br /> <br /></center>
+						<b id="spec"> Specifications: </b><br />
+						<ul>
+							<li> 5.5 inch Optic AMOLED Display</li>
+							<li> 3300 mAh Battery</li>
+							<li> 16MP Front 16MP Rear Wide Angle Camera </li>
+							<li> Snapdragon™ 835</li>
+						</ul>
+						Price: <b class="green">Rs. 32,999</b><br /><br />
+						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
+						<button class="comment" onclick="cartAdded()"> Write A Review </button>
+
+					</td>
+					<td id = "shad3" onmouseenter="shadow3()" onmouseleave="noshadow3()">
+
+						<center>
+							<h3>Oneplus 3T</h3>
+						<img src="https://images.gr-assets.com/books/1361039443m/41865.jpg" alt="Oneplus 3T" style = "height: 100%"/> <br /> <br /></center>
+						<b id="spec"> Specifications: </b><br />
+						<ul>
+							<li> 5.5 inch Full HD Display</li>
+							<li> Qualcomm® Snapdragon™ 821</li>
+							<li> 3400 mAh Battery</li>
+						</ul><br>
+						Price: <b class="green">Rs. 29,999</b><br /><br />
+						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
+						<button class="comment" onclick="cartAdded()"> Write A Review </button>
+
+					</td>
+				</tr>
+				<tr>
+					<td id = "shad4" onmouseenter="shadow4()" onmouseleave="noshadow4()">
+
+						<center>
+							<h3>Oneplus 3</h3>
+						<img src ="https://images.gr-assets.com/books/1361975680m/2657.jpg" alt= "Oneplus 3" style = "height: 100%"/> <br /> <br /></center>
+						<b id="spec"> Specifications: </b><br />
+						<ul>
+							<li> 5.5 inch Optic AMOLED Display</li>
+							<li> Qualcomm® Snapdragon™ 820</li>
+							<li> 6 GB RAM</li>
+							<li> 16 MP Rear Camera</li>
+						</ul>
+						Price: <b class="green">Rs. 27,999</b><br /><br />
+						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
+						<button class="comment" onclick="cartAdded()"> Write A Review </button>
+
+					</td>
+					<td id = "shad5" onmouseenter="shadow5()" onmouseleave="noshadow5()">
+
+						<center>
+							<h3>Oneplus 2</h3>
+						<img src ="https://images.gr-assets.com/books/1490528560m/4671.jpg" alt= "Oneplus 2" style = "height: 100%"/> <br /> <br /></center>
+						<b id="spec"> Specifications: </b><br />
+						<ul>
+							<li> 5.5 inch LCD Display</li>
+							<li> 13 MP Front Camera 5 MP Rear Camera</li>
+							<li> Li-Po 3300 mAh Battery</li>
+						</ul><br>
+						Price: <b class="green">Rs. 22,999</b><br /><br />
+						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
+						<button class="comment" onclick="cartAdded()"> Write A Review </button>
+
+					</td>
+					<td id = "shad6" onmouseenter="shadow6()" onmouseleave="noshadow6()">
+
+						<center>
+							<h3>Oneplus One</h3>
+						<img src ="https://images.gr-assets.com/books/1360206420m/11870085.jpg" alt= "Oneplus One" style = "height: 100%"/> <br /> <br /></center>
+						<b id="spec"> Specifications: </b><br />
+						<ul>
+							<li> 5.5 inch LCD Display</li>
+							<li> Qualcomm® Snapdragon™ 801</li>
+							<li> 3300 mAh Battery</li>
+							<li> 13 MP Front Camera 5 MP Rear Camera</li>
+						</ul>
+						Price: <b class="green">Rs. 7,500</b><br /><br />
+						<button class="cart" onclick="cartAdded()"> Add to Cart </button>
+						<button class="comment" onclick="cartAdded()"> Write A Review </button>
+
+					</td>
+				</tr>
+			</table>
+		</center>
+			<center>
+	</center>
+	<center>
+		<footer>
+            <p ><a id = "footref" href = "aboutus.html">About Us</a>
+            <a id = "footref" href = "FAQ.html">FAQ</a>
+            <a id = "footref" href="privacy_policy.html">Privacy Policy</a>
+            <a id = "footref" href="contactus.html">Contact Us</a>
+        </footer>
+	</center>
+			<script type="text/javascript">
+				function cartAdded(){
+					alert("Please Sign In To Continue!");
+				}
+				function shadow1(){
+					document.getElementById("shad1").style.boxShadow = "10px 10px 30px grey";
+				}
+				function shadow2(){
+					document.getElementById("shad2").style.boxShadow = "10px 10px 30px grey";
+				}
+				function shadow3(){
+					document.getElementById("shad3").style.boxShadow = "10px 10px 30px grey";
+				}
+				function shadow4(){
+					document.getElementById("shad4").style.boxShadow = "10px 10px 30px grey";
+				}
+				function shadow5(){
+					document.getElementById("shad5").style.boxShadow = "10px 10px 30px grey";
+				}
+				function shadow6(){
+					document.getElementById("shad6").style.boxShadow = "10px 10px 30px grey";
+				}
+				function noshadow1(){
+					document.getElementById("shad1").style.boxShadow = "0px 0px 0px grey";
+				}
+				function noshadow2(){
+					document.getElementById("shad2").style.boxShadow = "0px 0px 0px grey";
+				}
+				function noshadow3(){
+					document.getElementById("shad3").style.boxShadow = "0px 0px 0px grey";
+				}
+				function noshadow4(){
+					document.getElementById("shad4").style.boxShadow = "0px 0px 0px grey";
+				}
+				function noshadow5(){
+					document.getElementById("shad5").style.boxShadow = "0px 0px 0px grey";
+				}
+				function noshadow6(){
+					document.getElementById("shad6").style.boxShadow = "0px 0px 0px grey";
+				}
+			</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" type="text/css" href="./cart.css">
+    <link rel="stylesheet" type="text/css" href="../home_page/home.css">
+    <link rel="stylesheet" type="text/css" href="../navbar/nav.css">
+    <link rel="stylesheet" type="text/css" href="../login_signup/signup.css">
+
+    <script>
+        var total_price=0;
+        window.onload = function(){
+
+            var list = sessionStorage.getItem("cart");
+            var id_list = [];
+
+            for (i=3;i<list.length;i=i+2)
+            {
+                id_list.push(list[i]);
+            }
+            // console.log(id_list);
+            var obj = {"id":id_list};
+            var JSONdata = JSON.stringify(obj);
+            // console.log(JSONdata);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://0.0.0.0:8080/api/v1/getList", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function(){
+                if (xhr.status === 200 && xhr.readyState === 4)
+                {
+                    var myObj = JSON.parse(this.responseText);
+                    console.log(myObj);
+
+                    addDOM(myObj["data"], id_list);
+                    // recommendation(id_list);
+                }
+            };
+            xhr.send(JSONdata);
+            // alert("Recommending");
+
+            function addDOM(obj, list)
+            {
+                var name_list = obj[0]["title"];
+                var table = document.getElementById("table");
+                var tr = document.createElement("tr");
+                for(i=0; i<obj.length;i++)
+                {
+                    var img_url = obj[i]["url"];
+                    var book = obj[i]["title"];
+                    var author = obj[i]["author"];
+                    var published = obj[i]["published"]
+                    var rating = obj[i]["rating"];
+
+                    // var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.setAttribute("class","cell");
+
+                    td.style.alignContent = "center";
+                    var h3 = document.createElement("h3");
+                    h3.innerHTML = book;
+                    var center = document.createElement("center");
+                    var img = document.createElement("img");
+                    img.setAttribute("src",img_url);
+                    img.setAttribute("alt",book);
+                    img.style.height = "100%";
+                    center.appendChild(img);
+                    var div = document.createElement("div");
+                    var tmp = Math.round(rating*100) + 5;
+                    div.innerHTML = "Price : Rs. "+tmp+"<br><br>Author : "+author+"<br><br>Published : "+published+"<br><br>Rating : "+rating+"<br><br>";
+                    div.style.fontStyle = "italic";
+                    total_price += tmp;
+                    td.appendChild(h3);
+                    td.appendChild(img);
+                    // td.appendChild(document.createElement("br"));
+                    // td.appendChild(document.createElement("br"));
+                    td.appendChild(div)
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+                }
+
+                var price = document.getElementById("price");
+                price.innerHTML = "Total Price = Rs. "+total_price+"<button class = 'button'>Checkout</button>";
+                but = document.getElementsByClassName("button")[0];
+                but.setAttribute("onclick", "alert('Your order is processed. Thank you for your purchase!')")
+                console.log("RECOMMEND");
+                recommendation(name_list);
+            }
+        }
+
+        function recommendation(list)
+        {
+            // console.log(list);
+            JSONdata = JSON.stringify({"name":list});
+            console.log(JSONdata);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://0.0.0.0:8080/api/v1/recommend", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function(){
+                if (xhr.status === 200 && xhr.readyState === 3)
+                {
+                    var myObj = JSON.parse(this.responseText);
+                    console.log(myObj);
+
+                    addDOM2(myObj["data"]);
+                    // addDOM(id_list);
+                }
+            };
+            xhr.send(JSONdata);
+            // alert("Loading");
+        
+
+            function addDOM2(obj)
+            {
+                var name_list = obj[0]["title"];
+                var table = document.getElementById("table1");
+                var tr = document.createElement("tr");
+                for(i=0; i<obj.length;i++)
+                {
+                    var img_url = obj[i]["url"];
+                    var book = obj[i]["title"];
+                    var author = obj[i]["author"];
+                    var published = obj[i]["published"]
+                    var rating = obj[i]["rating"];
+
+                    // var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.setAttribute("class","cell")
+                    td.style.alignContent = "center";
+                    var h3 = document.createElement("h3");
+                    h3.innerHTML = book;
+                    var center = document.createElement("center");
+                    var img = document.createElement("img");
+                    img.setAttribute("src",img_url);
+                    img.setAttribute("alt",book);
+                    img.style.height = "100%";
+                    center.appendChild(img);
+                    var div = document.createElement("div");
+                    var tmp = Math.round(rating*100) + 5;
+                    div.innerHTML = "Price : Rs. "+tmp+"<br><br>Author : "+author+"<br><br>Published : "+published+"<br><br>Rating : "+rating+"<br><br>";
+                    div.style.fontStyle = "italic";
+                    // total_price += tmp;
+                    td.appendChild(h3);
+                    td.appendChild(img);
+                    // td.appendChild(document.createElement("br"));
+                    // td.appendChild(document.createElement("br"));
+                    td.appendChild(div)
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg">
+
+    <!--Navigation bar-->
+    <div class="topnav">
+            
+            <a href="../home_page/home.html">Home</a>
+            <a href="../cart_page/cart.html">Cart</a>
+            <a href="../login_signup/signup.html">Sign up</a>
+            <a href="../login_signup/login.html">Login</a>
+
+    </div>
+    <!--end of Navigation bar-->
+
+<div id="main">
+    <h1 class="title">Cart</h1>
+    <table id="table" border="0" cellpadding="20" cellspacing="30"></table>
+    <h3 id="price" class = "text"></h3>
+    
+</div>
+<div id="recommend" onload="recommendation()">
+    <h1 class = "title">Recommendation</h1>
+    <table id="table1" border="0" cellpadding="20" cellspacing="30"></table>
+</div>
+</body>
+</html>

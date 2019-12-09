@@ -1,0 +1,50 @@
+body
+{
+    background-image: url("../home_page/grey1.jpg");
+}
+
+#box
+{
+    background-color: white;
+    border-style: solid white;
+    border-radius: 4%;
+    padding: 3%;
+    width: 15%;
+    margin: auto;
+    margin-top: 7.5%;  
+}
+
+.tbox
+{
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: rgb(230, 227, 227);
+    width: 90%;
+    border:none;
+
+}
+
+.sub
+{
+    border-radius: 5%;
+    padding: 4%;
+    background-color: rgb(41, 167, 93);
+    border:none;
+    margin-top: 10%;
+    font-size: 100%;
+    color: white;
+    margin-left: 1%;
+}
+
+.form
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+}
+
+.header
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200%;
+}
